@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Experiencia audiovisual de Las Voces que Florecieron en la Sombra." />
+  <title>Experiencia audiovisual · Las Voces que Florecieron en la Sombra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="watch-page">
+  <header class="watch-header">
+    <a class="watch-header__brand" href="index.html" aria-label="Volver a la portada de la revista">
+      <span class="watch-header__brand-kicker">GENERACIÓN DECAPITADA</span>
+      <span class="watch-header__brand-title">Las Voces que Florecieron en la Sombra</span>
+    </a>
+    <span class="watch-header__section">EXPERIENCIA AUDIOVISUAL</span>
+    <a class="watch-back" id="watchBack" href="index.html?page=6">
+      <span aria-hidden="true">←</span> Volver a la revista
+    </a>
+  </header>
+
+  <main class="watch-main">
+    <article class="watch-card" aria-labelledby="watchTitle">
+      <header class="watch-card__header">
+        <div>
+          <p class="watch-card__kicker" id="watchKicker">PRODUCCIÓN AUDIOVISUAL</p>
+          <h1 class="watch-card__title" id="watchTitle">Spot Literario: Una Historia en Imágenes</h1>
+        </div>
+        <span class="watch-card__issue" id="watchIssue">PIEZA 01</span>
+      </header>
+
+      <div class="watch-player" id="watchPlayer">
+        <div class="watch-player__halo" aria-hidden="true"></div>
+        <video class="watch-player__video" id="watchVideo" controls playsinline preload="metadata" aria-describedby="watchDescription">
+          Tu navegador no admite reproducción de video.
+        </video>
+      </div>
+
+      <footer class="watch-card__footer">
+        <p class="watch-card__description" id="watchDescription"></p>
+        <a class="watch-card__return" id="watchReturn" href="index.html?page=6">Continuar leyendo <span aria-hidden="true">→</span></a>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="watch-footer">
+    <span>LAS VOCES QUE FLORECIERON EN LA SOMBRA</span>
+    <span>EDICIÓN N.° 01</span>
+  </footer>
+
+  <script src="js/video.js"></script>
+</body>
+</html>

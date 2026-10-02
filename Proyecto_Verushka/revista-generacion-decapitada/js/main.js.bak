@@ -1,0 +1,252 @@
+/**
+ * ================================================================
+ *  LAS VOCES QUE FLORECIERON EN LA SOMBRA
+ *  Revista Digital — Formato Proyector / Laptop
+ *  main.js · Navegación manual con flechas · Sin auto-avance
+ * ================================================================
+ */
+
+'use strict';
+
+/* ================================================================
+   ESTADO
+   ================================================================ */
+const State = {
+  current:      0,
+  total:        0,
+  transitioning: false,
+};
+
+/* ================================================================
+   ELEMENTOS DEL DOM
+   ================================================================ */
+let pages      = [];
+let arrowLeft  = null;
+let arrowRight = null;
+let dotsNav    = null;
+let pageCurrent = null;
+let pageTotal   = null;
+
+/* ================================================================
+   INICIALIZACIÓN
+   ================================================================ */
+function init() {
+  pages       = Array.from(document.querySelectorAll('.page'));
+  arrowLeft   = document.getElementById('arrowLeft');
+  arrowRight  = document.getElementById('arrowRight');
+  dotsNav     = document.getElementById('dotsNav');
+  pageCurrent = document.getElementById('pageCurrentLabel');
+  pageTotal   = document.getElementById('pageTotalLabel');
+
+  State.total = pages.length;
+
+  // Actualizar total en el indicador
+  if (pageTotal) pageTotal.textContent = State.total;
+
+  // Construir puntos de navegación
+  buildDots();
+
+  // Activar primera página (sin transición)
+  pages[0].classList.add('is-active');
+  updateUI();
+
+  // Eventos de flechas
+  if (arrowLeft)  arrowLeft.addEventListener('click',  () => navigate('prev'));
+  if (arrowRight) arrowRight.addEventListener('click', () => navigate('next'));
+
+  // Teclado
+  document.addEventListener('keydown', onKeyDown);
+
+  // Swipe táctil (por si se abre en tablet)
+  initSwipe();
+
+  // Pausar videos al salir de la página activa
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pauseAllVideos();
+  });
+
+  console.log(
+    '%c✦ Las Voces que Florecieron en la Sombra%c\n  Revista lista · Páginas: ' + State.total,
+    'color:#c9a84c;font-size:13px;font-weight:bold;',
+    'color:#8a6f35;font-size:11px;'
+  );
+}
+
+/* ================================================================
+   PUNTOS DE NAVEGACIÓN
+   ================================================================ */
+function buildDots() {
+  if (!dotsNav) return;
+  dotsNav.innerHTML = '';
+
+  for (let i = 0; i < State.total; i++) {
+    const dot = document.createElement('button');
+    dot.className   = 'dot';
+    dot.setAttribute('aria-label', `Ir a la página ${i + 1}`);
+    dot.dataset.index = i;
+    dot.addEventListener('click', () => goTo(i));
+    dotsNav.appendChild(dot);
+  }
+}
+
+function updateDots() {
+  const dots = dotsNav ? dotsNav.querySelectorAll('.dot') : [];
+  dots.forEach((d, i) => {
+    d.classList.toggle('is-active', i === State.current);
+    d.setAttribute('aria-current', i === State.current ? 'page' : 'false');
+  });
+}
+
+/* ================================================================
+   ACTUALIZAR UI (flechas, indicador, dots)
+   ================================================================ */
+function updateUI() {
+  // Indicador numérico
+  if (pageCurrent) pageCurrent.textContent = State.current + 1;
+
+  // Flechas
+  if (arrowLeft)  arrowLeft.classList.toggle('is-disabled',  State.current === 0);
+  if (arrowRight) arrowRight.classList.toggle('is-disabled', State.current === State.total - 1);
+
+  // Dots
+  updateDots();
+}
+
+/* ================================================================
+   NAVEGACIÓN
+   ================================================================ */
+function navigate(direction) {
+  if (State.transitioning) return;
+
+  const nextIndex = direction === 'next'
+    ? State.current + 1
+    : State.current - 1;
+
+  goTo(nextIndex, direction);
+}
+
+function goTo(index, direction) {
+  if (State.transitioning) return;
+  if (index < 0 || index >= State.total) return;
+  if (index === State.current) return;
+
+  State.transitioning = true;
+
+  const fromPage = pages[State.current];
+  const toPage   = pages[index];
+
+  // Determinar dirección de animación
+  const goingForward = index > State.current;
+  const outClass     = goingForward ? 'to-left'    : 'to-right';
+  const inClass      = goingForward ? 'from-right'  : 'from-left';
+
+  // Pausar video en la página que salimos
+  pauseVideoIn(fromPage);
+
+  // Página actual: salir
+  fromPage.classList.add(outClass);
+  fromPage.classList.remove('is-active');
+
+  // Página nueva: preparar entrada
+  toPage.classList.add(inClass);
+
+  // Forzar repaint para que la clase se aplique antes de animar
+  void toPage.offsetWidth;
+
+  // Activar nueva página (dispara transición CSS)
+  toPage.classList.remove(inClass);
+  toPage.classList.add('is-active');
+
+  State.current = index;
+  updateUI();
+
+  // Limpiar clases tras la transición
+  const DURATION = 550; // ms — debe coincidir con --t-slow en CSS
+  setTimeout(() => {
+    fromPage.classList.remove(outClass);
+    State.transitioning = false;
+  }, DURATION);
+}
+
+/* ================================================================
+   CONTROL DE VIDEOS
+   ================================================================ */
+function pauseVideoIn(page) {
+  const video = page.querySelector('video');
+  if (video && !video.paused) video.pause();
+}
+
+function pauseAllVideos() {
+  pages.forEach(p => pauseVideoIn(p));
+}
+
+/* ================================================================
+   TECLADO
+   ================================================================ */
+function onKeyDown(e) {
+  // No interferir si el usuario está escribiendo en un input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+  switch (e.key) {
+    case 'ArrowRight':
+    case 'ArrowDown':
+    case 'PageDown':
+    case ' ':
+      e.preventDefault();
+      navigate('next');
+      break;
+    case 'ArrowLeft':
+    case 'ArrowUp':
+    case 'PageUp':
+      e.preventDefault();
+      navigate('prev');
+      break;
+    case 'Home':
+      e.preventDefault();
+      goTo(0);
+      break;
+    case 'End':
+      e.preventDefault();
+      goTo(State.total - 1);
+      break;
+  }
+}
+
+/* ================================================================
+   SWIPE TÁCTIL
+   ================================================================ */
+function initSwipe() {
+  let startX   = 0;
+  let startY   = 0;
+  let dragging = false;
+  const THRESHOLD = 50; // px mínimos para reconocer swipe
+
+  document.addEventListener('touchstart', e => {
+    startX   = e.touches[0].clientX;
+    startY   = e.touches[0].clientY;
+    dragging = true;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
+
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = Math.abs(e.changedTouches[0].clientY - startY);
+
+    // Solo reconocer gestos más horizontales que verticales
+    if (Math.abs(dx) > THRESHOLD && Math.abs(dx) > dy) {
+      if (dx < 0) navigate('next');
+      else        navigate('prev');
+    }
+  }, { passive: true });
+}
+
+/* ================================================================
+   ARRANQUE
+   ================================================================ */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

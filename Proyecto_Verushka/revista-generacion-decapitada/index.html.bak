@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Las Voces que Florecieron en la Sombra — Generación Decapitada. Revista digital interactiva." />
+  <title>Las Voces que Florecieron en la Sombra</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  TÍTULO FIJO INAMOVIBLE — siempre visible en la parte sup -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <header class="masthead" role="banner">
+    <div class="masthead__ornament">✦</div>
+    <h1 class="masthead__title">Las Voces que Florecieron en la Sombra</h1>
+    <div class="masthead__ornament">✦</div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  INDICADOR DE PÁGINA                                       -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="page-indicator" id="pageIndicator" aria-live="polite">
+    <span id="pageCurrentLabel">1</span>
+    <span class="page-indicator__sep">·</span>
+    <span id="pageTotalLabel">8</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  BARRA DE PROGRESO (puntos)                                -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <nav class="dots-nav" id="dotsNav" role="navigation" aria-label="Índice de páginas"></nav>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  VISOR PRINCIPAL (tipo proyector)                          -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <main class="viewer" id="viewer" role="main">
+
+    <!-- FLECHA IZQUIERDA -->
+    <button class="nav-arrow nav-arrow--left" id="arrowLeft" aria-label="Página anterior" title="Página anterior">
+      <span class="nav-arrow__icon">&#8249;</span>
+    </button>
+
+    <!-- ─── CARRUSEL DE PÁGINAS ─── -->
+    <div class="carousel" id="carousel">
+
+      <!-- ═══ PÁGINA 1 — PORTADA ═══ -->
+      <article class="page page--cover" id="page-1" data-page="0" aria-label="Portada">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/BB8C86C4-FF56-4817-B70B-D7CFA68BD5C6.PNG"
+          alt="Portada: Las Voces que Florecieron en la Sombra"
+          draggable="false"
+        />
+        <!-- Sello decorativo sobre la portada -->
+        <div class="cover-seal">
+          <div class="cover-seal__ring">
+            <span class="cover-seal__text">Generación · Decapitada · Ecuador ·</span>
+          </div>
+          <div class="cover-seal__center">GD</div>
+        </div>
+      </article>
+
+      <!-- ═══ PÁGINA 2 ═══ -->
+      <article class="page" id="page-2" data-page="1" aria-label="Página 2">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/13FFA7FF-3DA2-4EE4-8C6D-C26D760F5920.PNG"
+          alt="Página 2"
+          draggable="false"
+        />
+      </article>
+
+      <!-- ═══ PÁGINA 3 ═══ -->
+      <article class="page" id="page-3" data-page="2" aria-label="Página 3">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/A56ECB73-C3B9-40A0-819C-6EAE8A992EBE.PNG"
+          alt="Página 3"
+          draggable="false"
+        />
+      </article>
+
+      <!-- ═══ PÁGINA 4 ═══ -->
+      <article class="page" id="page-4" data-page="3" aria-label="Página 4">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/240A699F-3A2C-4910-B08B-0C6303A7FEE6.PNG"
+          alt="Página 4"
+          draggable="false"
+        />
+      </article>
+
+      <!-- ═══ PÁGINA 5 — INFOGRAFÍA ═══ -->
+      <article class="page page--infografia" id="page-5" data-page="4" aria-label="Infografía">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/ad5d6ac3-15a4-4302-9dfa-7df1a21aced2.JPG.jpeg"
+          alt="Infografía: Generación Decapitada"
+          draggable="false"
+        />
+      </article>
+
+      <!-- ═══ PÁGINA 6 — VIDEO SPOT ═══ -->
+      <article class="page page--video" id="page-6" data-page="5" aria-label="Video Spot">
+        <div class="page__video-container">
+          <div class="page__video-label">
+            <span class="page__video-label-dot"></span>
+            Spot Literario
+          </div>
+          <video
+            id="video1"
+            class="page__video"
+            src="../Videos/copy_C431B0A3-306B-45F3-8279-C6B0930B7AB1.MOV"
+            playsinline
+            preload="metadata"
+            controls
+          ></video>
+        </div>
+      </article>
+
+      <!-- ═══ PÁGINA 7 — VIDEO 2 ═══ -->
+      <article class="page page--video" id="page-7" data-page="6" aria-label="Video Entrevista">
+        <div class="page__video-container">
+          <div class="page__video-label">
+            <span class="page__video-label-dot"></span>
+            Entrevista con IA
+          </div>
+          <video
+            id="video2"
+            class="page__video"
+            src="../Videos/copy_E065FDA7-4161-429E-88A1-007ED286F624.MOV"
+            playsinline
+            preload="metadata"
+            controls
+          ></video>
+        </div>
+      </article>
+
+      <!-- ═══ PÁGINA 8 — OPINIÓN PERSONAL ═══ -->
+      <article class="page page--opinion" id="page-8" data-page="7" aria-label="Opinión Personal">
+        <img
+          class="page__image page__image--contain"
+          src="../Imagenes/463679DA-4338-4205-A4AE-A61B9FDF6B54.PNG"
+          alt="Opinión Personal"
+          draggable="false"
+        />
+      </article>
+
+    </div><!-- /.carousel -->
+
+    <!-- FLECHA DERECHA -->
+    <button class="nav-arrow nav-arrow--right" id="arrowRight" aria-label="Página siguiente" title="Página siguiente">
+      <span class="nav-arrow__icon">&#8250;</span>
+    </button>
+
+  </main><!-- /.viewer -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>

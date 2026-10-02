@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Las Voces que Florecieron en la Sombra — Generación Decapitada. Revista digital interactiva." />
+  <title>Las Voces que Florecieron en la Sombra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══ MASTHEAD — TÍTULO INAMOVIBLE ══ -->
+  <header class="masthead" role="banner">
+    <div class="masthead__inner">
+      <span class="masthead__kicker">GENERACIÓN DECAPITADA</span>
+      <h1 class="masthead__title" aria-label="Las Voces que Florecieron en la Sombra">
+        Las Voces que Florecieron en la Sombra
+      </h1>
+      <span class="masthead__edition">N.°&thinsp;01</span>
+    </div>
+  </header>
+
+  <!-- ══ ESCENARIO CENTRAL ══ -->
+  <div class="stage" id="stage">
+    <div class="ambient-motes" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="page-sweep" id="pageSweep" aria-hidden="true"></div>
+
+    <!-- FLECHA ANTERIOR ← -->
+    <button class="arrow arrow--prev" id="arrowPrev" aria-label="Página anterior" title="Página anterior">
+      <span class="arrow__shaft" aria-hidden="true"></span>
+      <svg class="arrow__head" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="10 2 2 10 10 18"/>
+      </svg>
+    </button>
+
+    <!-- VISOR DE REVISTA -->
+    <div class="magazine" id="magazine" role="main" aria-label="Revista digital">
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 1 · PORTADA
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--art is-active" id="pg1" data-index="0" aria-label="Portada">
+        <img src="../Imagenes/BB8C86C4-FF56-4817-B70B-D7CFA68BD5C6.PNG"
+             alt="Portada: Las Voces que Florecieron en la Sombra" draggable="false" />
+        <span class="pg__folio-tag" aria-hidden="true">01</span>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 2 · ¿QUIÉNES FUERON?
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--art" id="pg2" data-index="1" aria-label="¿Quiénes fueron? — Cuatro poetas, una misma época">
+        <img src="../Imagenes/13FFA7FF-3DA2-4EE4-8C6D-C26D760F5920.PNG"
+             alt="¿Quiénes fueron? Cuatro poetas, una misma época" draggable="false" />
+        <span class="pg__folio-tag" aria-hidden="true">02</span>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 3 · MEDARDO ÁNGEL SILVA
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--art" id="pg3" data-index="2" aria-label="Medardo Ángel Silva — El Poeta de la Melancolía">
+        <img src="../Imagenes/A56ECB73-C3B9-40A0-819C-6EAE8A992EBE.PNG"
+             alt="Medardo Ángel Silva — El Poeta de la Melancolía" draggable="false" />
+        <span class="pg__folio-tag" aria-hidden="true">03</span>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 4 · TRES VOCES, UNA ÉPOCA
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--art" id="pg4" data-index="3" aria-label="Arturo Borja, Ernesto Noboa y Caamaño, Humberto Fierro">
+        <img src="../Imagenes/240A699F-3A2C-4910-B08B-0C6303A7FEE6.PNG"
+             alt="Tres voces, una época: Arturo Borja, Ernesto Noboa y Caamaño, Humberto Fierro" draggable="false" />
+        <span class="pg__folio-tag" aria-hidden="true">04</span>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 5 · INFOGRAFÍA
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--art" id="pg5" data-index="4" aria-label="Infografía: Generación Decapitada">
+        <img src="../Imagenes/ad5d6ac3-15a4-4302-9dfa-7df1a21aced2.JPG.jpeg"
+             alt="Infografía: Generación Decapitada" draggable="false" />
+        <span class="pg__folio-tag" aria-hidden="true">05</span>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 6 · SPOT LITERARIO (REPRODUCCIÓN DIRECTA)
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--video pg--spot-player" id="pg6" data-index="5" aria-label="Spot Literario">
+        <header class="pg__vid-header">
+          <div class="pg__vid-header-meta">
+            <span class="pg__kicker">PRODUCCIÓN AUDIOVISUAL</span>
+            <span class="pg__folio-badge">PÁG. 06</span>
+          </div>
+          <h2 class="pg__vid-title">Spot Literario: Una Historia en Imágenes</h2>
+          <p class="pg__vid-sub">Un homenaje visual a la intensidad y la memoria de la Generación Decapitada.</p>
+        </header>
+
+        <div class="pg__vid-player-wrap">
+          <span class="spot-player__glow" aria-hidden="true"></span>
+          <video id="video1" class="pg__video" controls playsinline preload="metadata"
+                 aria-label="Spot Literario de la Generación Decapitada">
+            <source src="../Videos/copy_C431B0A3-306B-45F3-8279-C6B0930B7AB1.mp4" type="video/mp4" />
+            Tu navegador no admite reproducción de video.
+          </video>
+        </div>
+
+        <footer class="pg__vid-footer">
+          <span class="pg__vid-note">GENERACIÓN DECAPITADA &nbsp;·&nbsp; HOMENAJE VISUAL</span>
+          <span class="pg__folio-tag pg__folio-tag--inline">06</span>
+        </footer>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 7 · PUERTA AUDIOVISUAL (VIDEO 2)
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--feature pg--feature-voice" id="pg7" data-index="6" aria-label="Entrevista con Inteligencia Artificial">
+        <a class="video-feature" href="video.html?video=voz" aria-label="Ver La Voz del Más Allá: Medardo Ángel Silva">
+          <span class="video-feature__wash" aria-hidden="true"></span>
+          <span class="video-feature__number" aria-hidden="true">07</span>
+          <span class="video-feature__eyebrow">RECREACIÓN HISTÓRICA CON IA</span>
+          <div class="video-feature__content">
+            <span class="video-feature__label">CONVERSACIÓN IMPOSIBLE</span>
+            <h2 class="video-feature__title">La Voz del Más Allá:<br />Medardo Ángel Silva</h2>
+            <p class="video-feature__description">El poeta responde desde la eternidad en una recreación nacida de la Inteligencia Artificial.</p>
+          </div>
+          <span class="video-feature__cta">
+            <span class="video-feature__play" aria-hidden="true">▶</span>
+            <span>Entrar a la entrevista</span>
+            <span class="video-feature__duration">Abrir experiencia</span>
+          </span>
+          <span class="video-feature__caption">MEDARDO ÁNGEL SILVA · GUAYAQUIL, 1898–1919</span>
+        </a>
+      </article>
+
+      <!-- ══════════════════════════════════════════
+           PÁGINA 8 · OPINIÓN PERSONAL Y CIERRE
+      ══════════════════════════════════════════ -->
+      <article class="pg pg--opinion" id="pg8" data-index="7" aria-label="Opinión Personal y Cierre">
+        <!-- Cabecera visual con la imagen original -->
+        <div class="pg__opinion-photo">
+          <img src="../Imagenes/463679DA-4338-4205-A4AE-A61B9FDF6B54.PNG"
+               alt="La poesía sigue viva" draggable="false" />
+          <div class="pg__opinion-photo-veil"></div>
+          <span class="pg__opinion-photo-tag">REFLEXIÓN FINAL</span>
+        </div>
+
+        <!-- Cuerpo editorial completo con texto enriquecido -->
+        <div class="pg__opinion-body">
+          <header class="pg__opinion-heading">
+            <span class="pg__kicker">OPINIÓN PERSONAL</span>
+            <div class="pg__rule"></div>
+            <h2 class="pg__opinion-title">Una llama que no se apaga</h2>
+          </header>
+
+          <div class="pg__opinion-prose">
+            <p>
+              <span class="pg__dropcap">L</span>a <strong>Generación Decapitada</strong> no fue simplemente una coincidencia cronológica de cuatro jóvenes brillantes; fue el grito desgarrador de una época que transitaba entre la nostalgia colonial y el vértigo de la modernidad. En medio de un Ecuador marcado por la incomprensión y las convenciones asfixiantes, Medardo Ángel Silva, Arturo Borja, Ernesto Noboa y Caamaño y Humberto Fierro encontraron en la cadencia del verso modernista el único refugio capaz de contener la intensidad de su dolor y su insaciable sed de belleza.
+            </p>
+            <p>
+              Su despedida voluntaria y prematura antes de cumplir los treinta años no fue una capitulación ante la vida, sino la consecuencia trágica de sentir el mundo con una hondura que desbordaba su tiempo. Supieron transformar la influencia de los poetas malditos franceses en una voz genuinamente nuestra, arraigada en las campanas coloniales de Quito y la brisa melancólica del río Guayas, legándonos estrofas donde el amor, el hastío y la muerte dialogan con una pureza conmovedora.
+            </p>
+            <blockquote class="pg__opinion-quote">
+              «La verdadera poesía no busca respuestas fáciles, sino el coraje de mirar de frente las sombras del alma y arrancarle a la oscuridad una chispa de inmortalidad.»
+            </blockquote>
+            <p>
+              Leerlos hoy es un acto de rebeldía íntima contra la prisa, la frialdad y el olvido de nuestros días. Nos recuerda que la fragilidad no es flaqueza, sino la prueba más lúcida de nuestra humanidad. Sus voces no se apagaron con su partida: siguen encendidas en cada lector que se estremece con sus líneas, demostrando que mientras exista quien anhele la belleza con devoción, su poesía florecerá eternamente en la penumbra.
+            </p>
+          </div>
+
+          <footer class="pg__byline">
+            <div class="pg__rule"></div>
+            <div class="pg__byline-content">
+              <div class="pg__byline-author">
+                <span class="pg__author-name">Verushka</span>
+                <span class="pg__author-role">Estudiante de Literatura &nbsp;·&nbsp; 2026</span>
+              </div>
+              <span class="pg__folio-tag pg__folio-tag--inline">08</span>
+            </div>
+          </footer>
+        </div>
+      </article>
+
+    </div><!-- /#magazine -->
+
+    <!-- FLECHA SIGUIENTE → -->
+    <button class="arrow arrow--next" id="arrowNext" aria-label="Página siguiente" title="Página siguiente">
+      <svg class="arrow__head" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="2 2 10 10 2 18"/>
+      </svg>
+      <span class="arrow__shaft" aria-hidden="true"></span>
+    </button>
+
+  </div><!-- /#stage -->
+
+  <!-- ══ BARRA DE NAVEGACIÓN INFERIOR ══ -->
+  <footer class="nav-strip" role="navigation" aria-label="Controles de navegación">
+    <div class="nav-dots" id="navDots" aria-hidden="true"></div>
+    <div class="nav-counter" aria-live="polite">
+      <span id="cntCurrent">01</span>
+      <span class="nav-counter__sep">/</span>
+      <span id="cntTotal">08</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
